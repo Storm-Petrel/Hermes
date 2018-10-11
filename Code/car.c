@@ -10,7 +10,7 @@
 #define MIN(x, y) (((x) < (y)) ? (x) : (y))
 
 typedef struct car{
-    char placa[7];
+    char *placa;
     position posAtual;
     position geofence[polyCorners];
     viagem viagem;
@@ -60,7 +60,7 @@ position getCenterOfGeofence(car *carro){
 
 void runScript(){
     char command[60];
-    snprintf(command, sizeof(command), "[Path to script.py here]");
+    snprintf(command, sizeof(command), "cd  C:\\Users\\Tiago\\Desktop\\Hermes");
     system(command);
     system("python ./script.py");
     system("del alert.txt");
@@ -93,12 +93,12 @@ void alert(car *c){
         FILE *fp = NULL;
         fp = fopen("alert.txt" ,"a");
         char link[1024];
-        char Key[] = "AIzaSyDAPnKQJwXhgqTLznH3JthGhVnrLBuu6p0";//change to your key
+        char Key[] = "AIzaSyDAPnKQJwXhgqTLznH3JthGhVnrLBuu6p0";
         position posAtual = getCenterOfGeofence(c);
         snprintf(link, sizeof(link), "https://maps.googleapis.com/maps/api/staticmap?center=%f,%f&zoom=12&scale=1&size=640x640&maptype=roadmap&format=png&visual_refresh=true&markers=size:mid%%7Ccolor:0xff0000%%7Clabel:%%7C%f,%f&path=color%%3ared|weight:1|fillcolor%%3ablank|%f,%f|%f,%f|%f,%f|%f,%f|%f,%f&key=%s", posAtual.lat, posAtual.lon, c->posAtual.lat, c->posAtual.lon, c->geofence[0].lat, c->geofence[0].lon, c->geofence[1].lat, c->geofence[1].lon, c->geofence[2].lat, c->geofence[2].lon, c->geofence[3].lat, c->geofence[3].lon, c->geofence[0].lat, c->geofence[0].lon, Key);
         fprintf(fp, "<html>\n<body>\n<p>\nVeiculo saiu da GeoFence! Atividade é estranha?\n</p>\n<div style=\"text-align:center;\">\n<img src=\"%s\" width=\"640\" height=\"640\" border=\"0\" alt=\"geofence\">\n<br>\n<span style=\"font-size:smaller;\">\nLocalização atual e Geofence do veículo de placa %s\n</span>\n</div>\n<p>\nSe a atividade for estranha clique 1 se não clique 2\n</p>\n</body>\n</html>", link, c->placa);
         fclose(fp);
-        runScript();
+        //runScript();
         return;
     }else{
         printf("Safe!\n");
