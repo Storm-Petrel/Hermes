@@ -125,7 +125,7 @@ void print_list()
 void alertCars(car *temp){
     for(temp=head; temp!=(car *)0; temp=temp->proximo)
     {
-        printf("\n");
+        //printf("\n");
         alert(temp);
     }    
 }
