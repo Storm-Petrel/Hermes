@@ -13,7 +13,7 @@
 
 **CODE**
 
-![Recordit GIF](http://g.recordit.co/iLN6A0vSD8.gif)
+![Recordit GIF](http://g.recordit.co/Rw5bXM5S20.gif)
 
 
 ## Team
