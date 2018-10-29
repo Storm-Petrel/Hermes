@@ -8,7 +8,7 @@
 
 > geofence, car, security.
 
-<img src="https://raw.githubusercontent.com/Storm-Petrel/Hermes/master/Media/hermes.gif" title="Idea" alt="idea">
+<img src="https://raw.githubusercontent.com/Storm-Petrel/Hermes/master/Media/hermes.gif" title="Idea" alt="idea" height="720" width="800">
 
 **Badges will go here**
 
