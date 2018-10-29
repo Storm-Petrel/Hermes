@@ -25,11 +25,8 @@
 
 | <a href="http://fvcproductions.com" target="_blank">**Mariana Polesi**</a> | <a href="http://fvcproductions.com" target="_blank">**Matheus Farias**</a> | <a href="https://github.com/tiagovalenca" target="_blank">**Tiago Valença**</a> |
 | :---: |:---:| :---:|
-| [![FVCproductions](https://avatars1.githubusercontent.com/u/4284691?v=3&s=200)](http://fvcproductions.com)    | [![FVCproductions](https://avatars1.githubusercontent.com/u/4284691?v=3&s=200)](http://fvcproductions.com) | [![FVCproductions](https://avatars2.githubusercontent.com/u/36921610?v=3&s=200)](http://fvcproductions.com)  |
+| [![FVCproductions](https://avatars1.githubusercontent.com/u/4284691?v=3&s=200)](http://fvcproductions.com)    | [![FVCproductions](https://avatars1.githubusercontent.com/u/4284691?v=3&s=200)](http://fvcproductions.com) | [![FVCproductions](https://avatars2.githubusercontent.com/u/36921610?v=3&s=200)](https://github.com/tiagovalenca)  |
 | <a href="http://github.com/fvcproductions" target="_blank">`github.com/fvcproductions`</a> | <a href="http://github.com/fvcproductions" target="_blank">`github.com/fvcproductions`</a> | <a href="https://github.com/tiagovalenca" target="_blank">`https://github.com/tiagovalenca`</a> |
-
-- You can just grab their GitHub profile image URL
-- You should probably resize their picture using `?s=200` at the end of the image URL.
 
 ---
 
