@@ -1,4 +1,4 @@
-<a href="https://storm-petrel.github.io/site/"><img src="https://raw.githubusercontent.com/Storm-Petrel/Hermes/master/logo.png" title="Hermes" alt="Hermes"></a>
+<a href="https://storm-petrel.github.io/site/"><img src="https://raw.githubusercontent.com/Storm-Petrel/Hermes/master/Media/logo.png" title="Hermes" alt="Hermes"></a>
 
 # Hermes
 
@@ -7,6 +7,8 @@
 > Keeping you safe.
 
 > geofence, car, security.
+
+<img src="https://raw.githubusercontent.com/Storm-Petrel/Hermes/master/Media/hermes.gif" title="Idea" alt="idea">
 
 **Badges will go here**
 
