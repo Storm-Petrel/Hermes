@@ -11,7 +11,7 @@
 <img src="https://raw.githubusercontent.com/Storm-Petrel/Hermes/master/Media/hermes.gif" title="Idea" alt="idea" height="500" width="600">
 
 
-**CODE STATUS**
+**CODE**
 
 ![Recordit GIF](http://g.recordit.co/iLN6A0vSD8.gif)
 
