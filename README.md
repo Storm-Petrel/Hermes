@@ -18,10 +18,10 @@
 
 ## Team
 
-| <a href="http://fvcproductions.com" target="_blank">**Beatriz Sérvio**</a> | <a href="https://github.com/joaovictor1020" target="_blank">**João Victor Bravo**</a> | <a href="http://fvcproductions.com" target="_blank">**Leonardo Rodrigues**</a> |
+| <a href="http://fvcproductions.com" target="_blank">**Beatriz Sérvio**</a> | <a href="https://github.com/joaovictor1020" target="_blank">**João Victor Bravo**</a> | <a href="https://github.com/leon13344" target="_blank">**Leonardo Rodrigues**</a> |
 | :---: |:---:| :---:|
-| [![FVCproductions](https://avatars1.githubusercontent.com/u/4284691?v=3&s=200)](http://fvcproductions.com)    | [![FVCproductions](https://avatars0.githubusercontent.com/u/39501506?v=3&s=200)](https://github.com/joaovictor1020) | [![FVCproductions](https://avatars1.githubusercontent.com/u/4284691?v=3&s=200)](http://fvcproductions.com)  |
-| <a href="http://github.com/fvcproductions" target="_blank">`github.com/fvcproductions`</a> | <a href="https://github.com/joaovictor1020" target="_blank">`https://github.com/joaovictor1020`</a> | <a href="http://github.com/fvcproductions" target="_blank">`github.com/fvcproductions`</a> |
+| [![FVCproductions](https://avatars1.githubusercontent.com/u/4284691?v=3&s=200)](http://fvcproductions.com)    | [![FVCproductions](https://avatars0.githubusercontent.com/u/39501506?v=3&s=200)](https://github.com/joaovictor1020) | [![FVCproductions](https://avatars3.githubusercontent.com/u/40325429?v=3&s=200)](http://fvcproductions.com)  |
+| <a href="http://github.com/fvcproductions" target="_blank">`github.com/fvcproductions`</a> | <a href="https://github.com/joaovictor1020" target="_blank">`https://github.com/joaovictor1020`</a> | <a href="https://github.com/leon13344" target="_blank">`https://github.com/leon13344`</a> |
 
 | <a href="http://fvcproductions.com" target="_blank">**Mariana Polesi**</a> | <a href="https://github.com/m4th21" target="_blank">**Matheus Farias**</a> | <a href="https://github.com/tiagovalenca" target="_blank">**Tiago Valença**</a> |
 | :---: |:---:| :---:|
