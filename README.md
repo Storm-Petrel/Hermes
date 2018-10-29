@@ -1,16 +1,12 @@
-<a href="https://raw.githubusercontent.com/Storm-Petrel/Hermes/master/logo.png"><img src="https://raw.githubusercontent.com/Storm-Petrel/Hermes/master/logo.png" title="Hermes" alt="Hermes"></a>
+<a href="https://storm-petrel.github.io/site/"><img src="https://raw.githubusercontent.com/Storm-Petrel/Hermes/master/logo.png" title="Hermes" alt="Hermes"></a>
 
-<!-- [![FVCproductions](https://avatars1.githubusercontent.com/u/4284691?v=3&s=200)](http://fvcproductions.com) -->
+# Hermes
 
-***INSERT GRAPHIC HERE (include hyperlink in image)***
+> A Storm Petrel Project aiming to build a geofence monitoring program for cars.
 
-# Repository Title Goes Here
+> Keeping you safe.
 
-> Subtitle or Short Description Goes Here
-
-> ideally one sentence
-
-> include terms/tags that can be searched
+> geofence, car, security.
 
 **Badges will go here**
 
