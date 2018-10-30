@@ -1,8 +1,8 @@
 import csv
 import random
 
-FEED_FILE = 'test.csv'
-OUT_FILE = 'test3.csv'
+FEED_FILE = 'cars.csv'
+OUT_FILE = 'UpdatePos.csv'
 
 
 rowcount = 0
