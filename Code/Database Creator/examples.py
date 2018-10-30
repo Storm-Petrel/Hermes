@@ -20,6 +20,6 @@ for x in range(0, 10):
 
     csvRow = [placa,atualLat,atualLon,geo0Lat,geo0Lon,geo1Lat,geo1Lon,geo2Lat,geo2Lon,geo3Lat,geo3Lon,"0","0"]
 
-    with open('test.csv', 'a', newline='\n') as csvfile:
+    with open('cars.csv', 'a', newline='\n') as csvfile:
         spamwriter = csv.writer(csvfile, delimiter=',',quotechar='|',quoting=csv.QUOTE_MINIMAL)
         spamwriter.writerow(csvRow)
