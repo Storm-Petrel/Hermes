@@ -1,3 +1,5 @@
+//                                   NEED TO INSTALL THE LIBRARY arduino-timer BY Michael Contreras
+
 #include <Keypad.h>
 #include <LiquidCrystal.h>
 #include <timer.h>
@@ -93,11 +95,11 @@ void loop(){
                  
             if(Senha_Correta == Senha_Digitada){
               lcd.print("Senha Correta");
-              Serial.print("Senha Correta \n");
+              Serial.print("1");
             } 
             else if(Senha_Emergen == Senha_Digitada){
               lcd.print("Senha Correta");
-              Serial.print("Alerta Iniciado! \n");
+              Serial.print("2");
              } 
             else{
               chances = chances - 1;
@@ -112,7 +114,7 @@ void loop(){
                 lcd.print("Senha Incorreta");
                 lcd.setCursor(0, 1);
                 lcd.print("Alerta Iniciado!");
-                Serial.print("Senha Incorreta! Alerta Iniciado! \n");
+                Serial.print("2");
               }
               delay(1000);
              }  
