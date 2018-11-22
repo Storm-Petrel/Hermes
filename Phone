@@ -1,0 +1,31 @@
+import serial
+import requests
+import time
+
+
+r = requests.get("https://stormpetrel.mybluemix.net/getCar?_id=LNJ4103")
+data = r.json()
+
+while data["alerta"] == False:
+    print("No aguardo!")
+    r = requests.get("https://stormpetrel.mybluemix.net/getCar?_id=LNJ4103")
+    data = r.json()
+    time.sleep(3)
+
+try:
+    arduino = serial.Serial('COM23', 9600)
+except:
+    print("Failed to connect on COM23")
+
+
+while 1:
+   if arduino.in_waiting == True:
+        x = arduino.read()
+
+        if x == b'1':
+            r = requests.get("https://stormpetrel.mybluemix.net/getSenha?_id=LNJ4103&senha=correta")
+
+        elif x == b'2':
+            r = requests.get("https://stormpetrel.mybluemix.net/getSenha?_id=LNJ4103&senha=emergencia")
+
+        exit()
