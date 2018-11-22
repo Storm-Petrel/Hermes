@@ -2,36 +2,49 @@
 #include <stdbool.h>
 #include <stdlib.h>
 #include <math.h>
-#include "position.c"
+#include "geofence.c"
 #include "travel.c"
 
-#define polyCorners 4
+#define max_cercas 5
 #define MAX(x, y) (((x) > (y)) ? (x) : (y))
 #define MIN(x, y) (((x) < (y)) ? (x) : (y))
 
 typedef struct car{
     char *placa;
     position posAtual;
-    position geofence[polyCorners];
+    geofence ativa;
+    geofence cercas[max_cercas];
     viagem viagem;
     struct car *proximo;
 }car;
 
 bool pointInGeofence(car *c) {
-    int   i, j=polyCorners-1 ;
-    bool  oddNodes=0;
-
-    for(i=0; i<polyCorners; i++) {
-        if(((c->geofence[i].latrad< c->posAtual.latrad && c->geofence[j].latrad>=c->posAtual.latrad) 
-        || (c->geofence[j].latrad< c->posAtual.latrad && c->geofence[i].latrad>=c->posAtual.latrad))  
-        &&  (c->geofence[i].lonrad<=c->posAtual.lonrad || c->geofence[j].lonrad<=c->posAtual.lonrad)) {
-        oddNodes^=(c->geofence[i].lonrad+(c->posAtual.latrad-c->geofence[i].latrad) / 
-            (c->geofence[j].latrad-c->geofence[i].latrad)*(c->geofence[j].lonrad-c->geofence[i].lonrad)<c->posAtual.lonrad); 
+  int counter = 0;
+  int i;
+  double xinters;
+  position p, p1,p2;
+  p = c->posAtual;
+  p1 = c->ativa.cerca[0];
+  for (i=1;i<=polyCorners;i++) {
+    p2 = c->ativa.cerca[i % polyCorners];
+    if (p.lat > MIN(p1.lat,p2.lat)) {
+      if (p.lat <= MAX(p1.lat,p2.lat)) {
+        if (p.lon <= MAX(p1.lon,p2.lon)) {
+          if (p1.lat != p2.lat) {
+            xinters = (p.lat-p1.lat)*(p2.lon-p1.lon)/(p2.lat-p1.lat)+p1.lon;
+            if (p1.lon == p2.lon || p.lon <= xinters)
+              counter++;
+          }
         }
-        j=i; 
+      }
     }
+    p1 = p2;
+  }
 
-    return oddNodes; 
+  if (counter % 2 == 0)
+    return false;
+  else
+    return true;
 }
 
 position getCenterOfGeofence(car *carro){
@@ -42,8 +55,8 @@ position getCenterOfGeofence(car *carro){
     double lat1, lon1, Lon, Hyp, Lat;
 
 	for(int i = 0; i < polyCorners; i++){
-		lat1= carro->geofence[i].lat;
-		lon1= carro->geofence[i].lon;
+		lat1= carro->ativa.cerca[i].lat;
+		lon1= carro->ativa.cerca[i].lon;
 		lat1 = lat1 * M_PI/180;
 		lon1 = lon1 * M_PI/180;
 		X += cos(lat1) * cos(lon1);
@@ -74,7 +87,6 @@ void switchTravelButton(car *c){
     }else{
         c->viagem.on = false;
     }
-
 }
 
 bool checkTimestamp(car *c){
@@ -86,10 +98,7 @@ bool checkTimestamp(car *c){
 }
 
 void alert(car *c){
-    //printf("O carro de placa %s está: ", c->placa);
     if (pointInGeofence(c) != true && c->viagem.on != true){
-        //printf("Alerta!\n");
-
         FILE *fp = NULL;
         fp = fopen("alert.txt" ,"a");
         char link[1024];
@@ -97,7 +106,7 @@ void alert(car *c){
         char button[1024];
         snprintf(button, sizeof(button), "Clique <a href=\"https://stormpetrel.mybluemix.net/putdata?_id=%s\">aqui</a> para ir ao site de alerta", c->placa);
         position posAtual = getCenterOfGeofence(c);
-        snprintf(link, sizeof(link), "https://maps.googleapis.com/maps/api/staticmap?center=%f,%f&zoom=12&scale=1&size=640x640&maptype=roadmap&format=png&visual_refresh=true&markers=size:mid%%7Ccolor:0xff0000%%7Clabel:%%7C%f,%f&path=color%%3ared|weight:1|fillcolor%%3ablank|%f,%f|%f,%f|%f,%f|%f,%f|%f,%f&key=%s", posAtual.lat, posAtual.lon, c->posAtual.lat, c->posAtual.lon, c->geofence[0].lat, c->geofence[0].lon, c->geofence[1].lat, c->geofence[1].lon, c->geofence[2].lat, c->geofence[2].lon, c->geofence[3].lat, c->geofence[3].lon, c->geofence[0].lat, c->geofence[0].lon, Key);
+        snprintf(link, sizeof(link), "https://maps.googleapis.com/maps/api/staticmap?center=%f,%f&zoom=12&scale=1&size=640x640&maptype=roadmap&format=png&visual_refresh=true&markers=size:mid%%7Ccolor:0xff0000%%7Clabel:%%7C%f,%f&path=color%%3ared|weight:1|fillcolor%%3ablank|%f,%f|%f,%f|%f,%f|%f,%f|%f,%f&key=%s", posAtual.lat, posAtual.lon, c->posAtual.lat, c->posAtual.lon, c->ativa.cerca[0].lat, c->ativa.cerca[0].lon, c->ativa.cerca[1].lat, c->ativa.cerca[1].lon, c->ativa.cerca[2].lat, c->ativa.cerca[2].lon, c->ativa.cerca[3].lat, c->ativa.cerca[3].lon, c->ativa.cerca[0].lat, c->ativa.cerca[0].lon, Key);
         fprintf(fp, "<html>\n<body>\n<p>\nVeiculo saiu da GeoFence! Atividade é estranha?\n</p>\n<div style=\"text-align:center;\">\n<img src=\"%s\" width=\"640\" height=\"640\" border=\"0\" alt=\"geofence\">\n<br>\n<span style=\"font-size:smaller;\">\nLocalização atual e Geofence do veículo de placa %s\n</span>\n</div>\n<p>\nSe a atividade for estranha %s\n</p>\n</body>\n</html>", link, c->placa, button);
         fclose(fp);
         runScript();

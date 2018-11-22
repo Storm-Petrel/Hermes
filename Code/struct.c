@@ -2,30 +2,28 @@
 #include <string.h>
 #define MAXS 200000
 
-car *head, *tail, *temp;
-
-void add(car *temp);
+void add(car *head, car *tail, car *c);
 void print_list();
 void alertCars(car *temp);
 void updatePos(car *temp);
 
-int main(void) {
+void downloadDatabase(car *head, car *tail) {
 
-    char *line = NULL;
-    int read = 0;
-    size_t n = 0;
-    car **cars = NULL;
-    char *sp = NULL;
-    char *p = NULL;
-    int field = 0;
-    int cnt = 0;
-    int it = 0;
+    char *line = NULL;          /* pointer to use with getline ()   */
+    int read = 0;           /* characters read by getline ()    */
+    size_t n = 0;               /* number of bytes to allocate      */
+    car **cars = NULL;  /* ptr to array of stuct student    */
+    char *sp = NULL;            /* start pointer for parsing line   */
+    char *p = NULL;             /* end pointer to use parsing line  */
+    int field = 0;              /* counter for field in line         */
+    int cnt = 0;                /* counter for number allocated     */
+    int it = 0;                 /* simple iterator variable         */
 
     FILE *fp;
     fp = fopen ("cars.csv", "r");
     if (!fp) {
         fprintf (stderr, "failed to open file for reading\n");
-        return 1;
+        return;
     }
 
     cars = calloc (MAXS, sizeof (*cars));
@@ -34,6 +32,7 @@ int main(void) {
 
         sp = p = line;
         field = 0;
+
         cars[cnt] = malloc (sizeof (**cars));
 
         while (*p)
@@ -45,14 +44,14 @@ int main(void) {
                 if (field == 0) cars[cnt]->placa = strdup(sp);
                 if (field == 1) cars[cnt]->posAtual.lat = atof(sp);
                 if (field == 2) cars[cnt]->posAtual.lon  = atof(sp);
-				if (field == 3) cars[cnt]->ativa.cerca[0].lat = atof(sp);
-				if (field == 4) cars[cnt]->ativa.cerca[0].lon = atof(sp);
-				if (field == 5) cars[cnt]->ativa.cerca[1].lat = atof(sp);
-				if (field == 6) cars[cnt]->ativa.cerca[1].lon = atof(sp);
-				if (field == 7) cars[cnt]->ativa.cerca[2].lat = atof(sp);
-				if (field == 8) cars[cnt]->ativa.cerca[2].lon = atof(sp);
-				if (field == 9) cars[cnt]->ativa.cerca[3].lat = atof(sp);
-				if (field == 10) cars[cnt]->ativa.cerca[3].lon = atof(sp);
+				if (field == 3) cars[cnt]->geofence[0].lat = atof(sp);
+				if (field == 4) cars[cnt]->geofence[0].lon = atof(sp);
+				if (field == 5) cars[cnt]->geofence[1].lat = atof(sp);
+				if (field == 6) cars[cnt]->geofence[1].lon = atof(sp);
+				if (field == 7) cars[cnt]->geofence[2].lat = atof(sp);
+				if (field == 8) cars[cnt]->geofence[2].lon = atof(sp);
+				if (field == 9) cars[cnt]->geofence[3].lat = atof(sp);
+				if (field == 10) cars[cnt]->geofence[3].lon = atof(sp);
 				if (field == 11) cars[cnt]->viagem.on = atoi(sp);										
 
                 *p = ','; 
@@ -61,28 +60,18 @@ int main(void) {
             }
             p++; 
         }
-        //printf("debug\n");
         cars[cnt]->viagem.timestamp = atoi(sp);
-		temp = (car *) malloc(sizeof(car));
-		temp = cars[cnt];
-        temp->posAtual.latrad = degrees2radians(temp->posAtual.lat);
-        temp->posAtual.lonrad = degrees2radians(temp->posAtual.lon);
-        for(int i=0; i<polyCorners; i++){
-            temp->ativa.cerca[i].latrad = degrees2radians(temp->ativa.cerca[i].lat);
-            temp->ativa.cerca[i].lonrad = degrees2radians(temp->ativa.cerca[i].lon);
-        }
-        temp->cercas[0] = temp->ativa;
-    	temp->proximo=(car *)0;
-		add(temp);
+		add(head, tail, cars[cnt]);
         cnt++;
+        return;
     }
 
     fclose (fp);
     if (line)
         free (line);
 	
-    updatePos(head);
-	alertCars(head);
+    //updatePos(head);
+	//alertCars(head);
     printf ("\nThere are %d Cars in database!\n\n", cnt);
 
     it = 0;
@@ -93,31 +82,70 @@ int main(void) {
         free (cars[it]);
         it++;
     }
-
     if (cars) free (cars);
-    return 0;
+
+    return;
 }
 
-void add(car *temp)
-{
-    if(head==(car *)0)
+void add(car *head, car * tail, car *c)
+{       
+        car *temp;
+        temp = (car *) malloc(sizeof(car));
+		temp = c;
+        printf("%s\n", temp->placa);
+        temp->posAtual.latrad = degrees2radians(temp->posAtual.lat);
+        temp->posAtual.lonrad = degrees2radians(temp->posAtual.lon);
+        for(int i=0; i<polyCorners; i++){
+            temp->geofence[i].latrad = degrees2radians(temp->geofence[i].lat);
+            temp->geofence[i].lonrad = degrees2radians(temp->geofence[i].lon);
+        }
+    	temp->proximo=(car *)0;
+        head=NULL;
+    if(head==NULL)
     {
-        head=temp;
-        tail=temp;
+        strcpy(head->placa, temp->placa);
+        tail=head;
+        printf("entrou\n");
+        temp = NULL;
+        free(temp);
+        return;
     }
     else
     {
         tail->proximo=temp;
         tail=temp; 
-    } 
+        printf("nope\n");
+        temp = NULL;
+        free(temp);
+        return;
+    }
 }
 
-void alertCars(car *temp){
+void print_list(car *head)
+{
+    printf("\n\n");
+    car *temp;
+    temp = malloc(sizeof(car));
+    for(temp=head; temp!=(car *)0; temp=temp->proximo)
+    {
+        printf("[%s]->",(temp->placa));
+
+    }
+    temp = NULL;
+    free(temp);
+    printf("[NULL]\n\n");
+}
+
+void alertCars(car *head){
+    car *temp;
+    temp = malloc(sizeof(car));
     for(temp=head; temp!=(car *)0; temp=temp->proximo)
     {
         //printf("\n");
         alert(temp);
-    }    
+    }
+    temp = NULL;
+    free(temp);
 }
 
 void updatePos(car *head){
@@ -166,6 +194,8 @@ void updatePos(car *head){
         cnt2++;
     }
     fclose (file);
+    car *temp;
+    temp = malloc(sizeof(car));
     temp = head;
 
     int i = 0;
@@ -175,6 +205,7 @@ void updatePos(car *head){
         temp->posAtual.lon = cars2[i]->posAtual.lon;
         temp->posAtual.latrad = degrees2radians(temp->posAtual.lat);
         temp->posAtual.lonrad = degrees2radians(temp->posAtual.lon);
+        temp = temp->proximo;
         i++;
     }
 
