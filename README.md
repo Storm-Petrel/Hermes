@@ -10,8 +10,14 @@
 
 <img src="https://raw.githubusercontent.com/Storm-Petrel/Hermes/master/Media/hermes.gif" title="Idea" alt="idea" height="500" width="600">
 
-[Central Alerta](https://s3.amazonaws.com/img0.recordit.co/eeQhldxohy.mp4?AWSAccessKeyId=AKIAINSRFOQXTN4DT46A&Expires=1543863854&Signature=YhYHqkEBvfpz9HedsqSPjH35f9A%3D)
+# Security Central
+If you want to implement this project you need to create two emails for the security central, one to emit the alerts and one to receive them and see if it is necessary to ask for the user to input his passwords.
 
+>The Security Central, first receives the alert email and verifies if it is necessary to ask the user for his passwords.
+![Central Alert](https://raw.githubusercontent.com/Storm-Petrel/Hermes/master/Media/Central-Alerta.gif)
+
+>If the user input is equal to emergency the Security Central receives an email asking it to contact the authorities passing the information of the vehicle.
+![Central Authorities](https://raw.githubusercontent.com/Storm-Petrel/Hermes/master/Media/Central-Autoridades.gif)
 
 **CODE**
 
