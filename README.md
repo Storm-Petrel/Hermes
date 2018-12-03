@@ -21,6 +21,7 @@ If you want to implement this project you need to create two emails for the secu
 
 # Temporary Fence
 If the user's input is the "safe" password a temporary geofence, with the duration of 24 hours is generated, after this period is over the fence returns to it's original form.
+
 ![Temporary Fence](https://raw.githubusercontent.com/Storm-Petrel/Hermes/master/Media/temporary-fence.gif)
 
 **CODE**
