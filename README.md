@@ -16,7 +16,7 @@ If you want to implement this project you need to create two emails for the secu
 >The Security Central, first receives the alert email and verifies if it is necessary to ask the user for his passwords.
 ![Central Alert](https://raw.githubusercontent.com/Storm-Petrel/Hermes/master/Media/Central-Alerta.gif)
 
->If the user input is equal to emergency the Security Central receives an email asking it to contact the authorities passing the information of the vehicle.
+>If the user input is equal to emergency the Security Central receives an email asking it to contact the authorities.
 ![Central Authorities](https://raw.githubusercontent.com/Storm-Petrel/Hermes/master/Media/Central-Autoridades.gif)
 
 **CODE**
