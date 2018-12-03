@@ -10,6 +10,20 @@
 
 <img src="https://raw.githubusercontent.com/Storm-Petrel/Hermes/master/Media/hermes.gif" title="Idea" alt="idea" height="500" width="600">
 
+***Implementation***
+
+For this project to work there is a need for the use of the code in this repository, and besides the code there is also a need to create node-red and cloudant instances in the IBM Bluemix for signaling.
+![Bluemix](https://github.com/Storm-Petrel/Hermes/blob/master/Media/node-red.png)
+
+***Description***
+
+Every car can have multiple geofences and the one that's active is based on the car's current position.
+Every time the car leaves it's active geofence an alert is emitted to a Security Central. The Central then checks if it's really an
+alert situation, in the case the alert is real the Central will ask for an user password (currently in an Arduino).
+Every user will have two passwords, a "safe" one, that deactivates the alert and creates a temporary fence, and an "emergency" one.
+If the input is equal to the emergency password, the "safe" password is not typed in 5 minutes or if the user types a wrong password
+4 times, an email is emitted to the Central asking it to talk with the authorities.
+
 # Security Central
 If you want to implement this project you need to create two emails for the security central, one to emit the alerts and one to receive them and see if it is necessary to ask for the user to input his passwords.
 
