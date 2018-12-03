@@ -48,7 +48,7 @@ If the user's input is the "safe" password a temporary geofence, with the durati
 | <a href="https://github.com/Beatr1z" target="_blank">**Beatriz Sérvio**</a> | <a href="https://github.com/joaovictor1020" target="_blank">**João Victor Bravo**</a> | <a href="https://github.com/leon13344" target="_blank">**Leonardo Rodrigues**</a> |
 | :---: |:---:| :---:|
 | [![FVCproductions](https://avatars1.githubusercontent.com/u/40302576?v=3&s=200)](https://github.com/Beatr1z)    | [![FVCproductions](https://avatars0.githubusercontent.com/u/39501506?v=3&s=200)](https://github.com/joaovictor1020) | [![FVCproductions](https://avatars3.githubusercontent.com/u/40325429?v=3&s=200)](http://fvcproductions.com)  |
-| <a href="https://github.com/Beatr1z" target="_blank">`hhttps://github.com/Beatr1z`</a> | <a href="https://github.com/joaovictor1020" target="_blank">`https://github.com/joaovictor1020`</a> | <a href="https://github.com/leon13344" target="_blank">`https://github.com/leon13344`</a> |
+| <a href="https://github.com/Beatr1z" target="_blank">`https://github.com/Beatr1z`</a> | <a href="https://github.com/joaovictor1020" target="_blank">`https://github.com/joaovictor1020`</a> | <a href="https://github.com/leon13344" target="_blank">`https://github.com/leon13344`</a> |
 
 | <a href="https://github.com/polesi" target="_blank">**Mariana Polesi**</a> | <a href="https://github.com/m4th21" target="_blank">**Matheus Farias**</a> | <a href="https://github.com/tiagovalenca" target="_blank">**Tiago Valença**</a> |
 | :---: |:---:| :---:|
