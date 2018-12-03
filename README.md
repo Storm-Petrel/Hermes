@@ -19,6 +19,10 @@ If you want to implement this project you need to create two emails for the secu
 >If the user's input is equal to emergency the Security Central receives an email asking it to contact the authorities.
 ![Central Authorities](https://raw.githubusercontent.com/Storm-Petrel/Hermes/master/Media/Central-Autoridades.gif)
 
+# Temporary Fence
+If the user's input is the "safe" password a temporary geofence, with the duration of 24 hours is generated, after this period is over the fence returns to it's original form.
+![Temporary Fence](https://raw.githubusercontent.com/Storm-Petrel/Hermes/master/Media/temporary-fence.gif)
+
 **CODE**
 
 ![Recordit GIF](http://g.recordit.co/Rw5bXM5S20.gif)
