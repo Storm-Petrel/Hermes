@@ -16,6 +16,9 @@ typedef struct car{
     geofence cercas[max_cercas];
     viagem viagem;
     struct car *proximo;
+    bool alerta;
+    char *senha;
+    bool soundAlert;
 }car;
 
 bool pointInGeofence(car *c) {
@@ -98,7 +101,8 @@ bool checkTimestamp(car *c){
 }
 
 void alert(car *c){
-    if (pointInGeofence(c) != true && c->viagem.on != true){
+    if (pointInGeofence(c) != true && c->viagem.on != true && c->soundAlert != true){
+        c->soundAlert=true;
         FILE *fp = NULL;
         fp = fopen("alert.txt" ,"a");
         char link[1024];
@@ -113,12 +117,13 @@ void alert(car *c){
         return;
     }else{
         //printf("Safe!\n");
-        if(c->viagem.on == true && pointInGeofence(c) == true  && time(NULL) - checkTimestamp(c) != true){
+        if(c->viagem.on == true && pointInGeofence(c) == true  && (time(NULL) - checkTimestamp(c)) != true){
             int desativar;
             printf("Voce esta dentro da sua geofence, digite 1 se deseja desativar o modo viagem\n");
             scanf("%d", &desativar);
             if(desativar == 1){
                 c->viagem.on = false;
+                c->viagem.timestamp = 0;
                 printf("Modo viagem desativado\n");
             }
             c->viagem.timestamp = time(NULL);
