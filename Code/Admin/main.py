@@ -5,7 +5,6 @@ def getcenter(points):
     center = (max(x) + min(x)) / 2., (max(y) + min(y)) / 2.
     return center
 
-OUT_FILE = 'alerta.csv'
 Key = "AIzaSyDAPnKQJwXhgqTLznH3JthGhVnrLBuu6p0"
 r = requests.get("https://stormpetrel.mybluemix.net/getalert")
 
